@@ -13,6 +13,7 @@ Science](http://www.vvz.ethz.ch/Vorlesungsverzeichnis/lerneinheit.view?semkez=20
 -   Mode: hybrid - in person and via zoom
 -   Room: LFW B2
 -   Moodle: <https://moodle-app2.let.ethz.ch/course/view.php?id=16601>
+-   Zoom-Link: <https://ethz.zoom.us/j/61244726673>
 
 ## Questions
 
@@ -38,4 +39,4 @@ Commons Attribution 4.0 International License</a>.
 
 ------------------------------------------------------------------------
 
-*Latest Changes: 2022-04-26 11:57:38 (pvr)*
+*Latest Changes: 2022-04-26 18:06:03 (pvr)*
