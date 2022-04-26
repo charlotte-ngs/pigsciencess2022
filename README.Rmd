@@ -24,6 +24,7 @@ __Welcome__ to
 - Mode: hybrid - in person and via zoom
 - Room: LFW B2
 - Moodle: https://moodle-app2.let.ethz.ch/course/view.php?id=16601
+- Zoom-Link:  https://ethz.zoom.us/j/61244726673
 
 
 ## Questions
