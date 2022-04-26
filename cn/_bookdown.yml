@@ -1,0 +1,5 @@
+book_filename: cn_psb_ss2022
+language:
+  ui:
+    chapter_name: "Chapter "
+delete_merged_file: TRUE

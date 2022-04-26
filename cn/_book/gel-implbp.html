@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 Implementation Of A Breeding Program | Pig Science - Part Breeding</title>
+  <meta name="description" content="Chapter 3 Implementation Of A Breeding Program | Pig Science - Part Breeding" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 Implementation Of A Breeding Program | Pig Science - Part Breeding" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta name="github-repo" content="charlotte-ngs/pigsciencess2022" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 Implementation Of A Breeding Program | Pig Science - Part Breeding" />
+  
+  
+  
+
+<meta name="author" content="Peter von Rohr" />
+
+
+<meta name="date" content="2022-04-26" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="gel-bprog.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Pig Science (Part Breeding)</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="gel-intro.html"><a href="gel-intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="gel-intro.html"><a href="gel-intro.html#gel-intro-terminology"><i class="fa fa-check"></i><b>1.1</b> Terminology</a></li>
+<li class="chapter" data-level="1.2" data-path="gel-intro.html"><a href="gel-intro.html#gel-intro-background"><i class="fa fa-check"></i><b>1.2</b> Background</a></li>
+<li class="chapter" data-level="1.3" data-path="gel-intro.html"><a href="gel-intro.html#gel-intro-breedingvsproduction"><i class="fa fa-check"></i><b>1.3</b> Breeding Versus Production</a></li>
+<li class="chapter" data-level="1.4" data-path="gel-intro.html"><a href="gel-intro.html#gel-intro-summary"><i class="fa fa-check"></i><b>1.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="gel-bprog.html"><a href="gel-bprog.html"><i class="fa fa-check"></i><b>2</b> Breeding Programs</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="gel-bprog.html"><a href="gel-bprog.html#gel-bprog-intro"><i class="fa fa-check"></i><b>2.1</b> Introduction</a></li>
+<li class="chapter" data-level="2.2" data-path="gel-bprog.html"><a href="gel-bprog.html#gel-bprog-parts"><i class="fa fa-check"></i><b>2.2</b> Parts Of A Breeding Program</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="gel-bprog.html"><a href="gel-bprog.html#gel-bprog-perftest"><i class="fa fa-check"></i><b>2.2.1</b> Performance Testing</a></li>
+<li class="chapter" data-level="2.2.2" data-path="gel-bprog.html"><a href="gel-bprog.html#gel-bprog-predbv"><i class="fa fa-check"></i><b>2.2.2</b> Prediction Of Breeding Values</a></li>
+<li class="chapter" data-level="2.2.3" data-path="gel-bprog.html"><a href="gel-bprog.html#gel-bprog-reprotech"><i class="fa fa-check"></i><b>2.2.3</b> Reproduction Technologies</a></li>
+<li class="chapter" data-level="2.2.4" data-path="gel-bprog.html"><a href="gel-bprog.html#gel-bprog-breedinggoal"><i class="fa fa-check"></i><b>2.2.4</b> Breedung Goals</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="gel-bprog.html"><a href="gel-bprog.html#gel-bprog-species"><i class="fa fa-check"></i><b>2.3</b> Different Species</a></li>
+<li class="chapter" data-level="2.4" data-path="gel-bprog.html"><a href="gel-bprog.html#gel-bprog-succbreedprog"><i class="fa fa-check"></i><b>2.4</b> Success Of A Breeding Program</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="gel-bprog.html"><a href="gel-bprog.html#gel-bprog-selintensity"><i class="fa fa-check"></i><b>2.4.1</b> Selection Intensity</a></li>
+<li class="chapter" data-level="2.4.2" data-path="gel-bprog.html"><a href="gel-bprog.html#gel-bprog-accpredbv"><i class="fa fa-check"></i><b>2.4.2</b> Accuracy Of Predicted Breeding Values</a></li>
+<li class="chapter" data-level="2.4.3" data-path="gel-bprog.html"><a href="gel-bprog.html#gel-bprog-addgenvar"><i class="fa fa-check"></i><b>2.4.3</b> Additive-genetic Variance</a></li>
+<li class="chapter" data-level="2.4.4" data-path="gel-bprog.html"><a href="gel-bprog.html#gel-bprog-genint"><i class="fa fa-check"></i><b>2.4.4</b> Generation Interval</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="gel-bprog.html"><a href="gel-bprog.html#gel-bprog-fedreg"><i class="fa fa-check"></i><b>2.5</b> Federal Regulations</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="gel-implbp.html"><a href="gel-implbp.html"><i class="fa fa-check"></i><b>3</b> Implementation Of A Breeding Program</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="gel-implbp.html"><a href="gel-implbp.html#gel-implbp-intro"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.2" data-path="gel-implbp.html"><a href="gel-implbp.html#gel-implbp-desired-gains"><i class="fa fa-check"></i><b>3.2</b> Desired Gains</a></li>
+<li class="chapter" data-level="3.3" data-path="gel-implbp.html"><a href="gel-implbp.html#gel-implbp-devbg"><i class="fa fa-check"></i><b>3.3</b> Development Of The Breeding Goal</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="gel-implbp.html"><a href="gel-implbp.html#gel-implbp-descprodsys"><i class="fa fa-check"></i><b>3.3.1</b> Description Of Production System</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="gel-implbp.html"><a href="gel-implbp.html#gel-implbp-dettrint"><i class="fa fa-check"></i><b>3.4</b> Determine Traits Of Economic Interest</a></li>
+<li class="chapter" data-level="3.5" data-path="gel-implbp.html"><a href="gel-implbp.html#gel-implbp-geneval"><i class="fa fa-check"></i><b>3.5</b> Genetic Evaluation</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Pig Science - Part Breeding</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="gel-implbp" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Implementation Of A Breeding Program<a href="gel-implbp.html#gel-implbp" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="gel-implbp-intro" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Introduction<a href="gel-implbp.html#gel-implbp-intro" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In chapter <a href="gel-bprog.html#gel-bprog">2</a> (see Figure <a href="gel-bprog.html#fig:bprogdiag">2.1</a>) the different types of breeding programs and the components of a breeding program are shown and described. This chapter aims at giving an outline of how to implement a specific breeding program for a given population. We assume a beef breeding organisation that approaches us and we have to consult them on how to implement a breeding program. The breeding organisation wants to improve their breeding animals with respect to the economic profitability of the animals sold at the production level. This implies that we want to use a hierarchical structure for the breeding program (see Figure <a href="gel-implbp.html#fig:gel-implbp-hier-bp">3.1</a>).</p>
+<p>In previous years the beef breeding organisation has included several production and reproduction traits. The traits have been combined into a selection index. The weighting factors of the different traits in the selection index have been determined by the desired gain approach. As shown in section <a href="gel-implbp.html#gel-implbp-desired-gains">3.2</a> index weights determined by desired gains do not reflect the economic context of a production system. But the more recent developments in the agricultural sector with decreasing market prices puts a lot of pressure on the economic efficiency of the production animal goods. Hence, the beef breeding organisation wants to have a better consideration of the economic context of beef production in their breeding goal. As a consequence of that, the breeding organisation agreed on changing the currently used breeding goal to a scientifically formulated breeding goal. In what follows, we briefly describe the desired gain approach and then develop the breeding goal that is based on the economic context of the animal production system.</p>
+<div class="figure"><span style="display:block;" id="fig:gel-implbp-hier-bp"></span>
+<img src="odg/gel-implbp-hier-bp.png" alt="Hierarchical Structure of a Breeding Program" width="11cm" />
+<p class="caption">
+Figure 3.1: Hierarchical Structure of a Breeding Program
+</p>
+</div>
+</div>
+<div id="gel-implbp-desired-gains" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Desired Gains<a href="gel-implbp.html#gel-implbp-desired-gains" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The desired gains approach is described e.g. in <span class="citation">(<a href="#ref-Brascamp1984" role="doc-biblioref">Brascamp 1984</a>)</span> and in <span class="citation">(<a href="#ref-Gibson1990" role="doc-biblioref">Gibson and Kennedy 1990</a>)</span>. There is a fundamental difference between economic selection indices and restricted or desired gains indices. The term <strong>restricted</strong> selection index refers to the situation where the genetic change of one or several traits are set to <span class="math inline">\(0\)</span> whereas in a desired gains index, the genetic change of certain traits is pre-specified. It is also possible to have a mixture of restricted selection indices, desired gains indices and economic indices.</p>
+<p>With economic selection indices, the response to selection is entirely determined by the economic weights (also known as economic values) of the traits contributing to the economic merit of the production animals, the phenotypic variance-covariance matrix among the traits in the index, and the genetic covariance between the traits in the index and the traits of economic interest. It has to be noted here, that all traits of economic interest are included in the aggregate genotype (<span class="math inline">\(H\)</span>).</p>
+<p>With restricted and desired gains indices, there are predetermined constraints on genetic response of some traits that partially or completely override the response determined by their economic weights. In the case of restricted indexes, economic weights of restricted traits are not defined. Justification for the use of restricted or desired gains indices has been either that some traits are considered already to be at an economic optimum or that economic weights are difficult or impossible to determine. However, in the former case economic weights at the optimum are by definition zero. It would then be appropriate to use an economic weight of zero or, if there is marked nonlinearity in the economic weights, to use a nonlinear selection index.</p>
+<p>Assuming that a given trait is already at its economic optimum, its economic weight would be set to zero. After a given time corresponding to the planning horizon of the breeding program, it must be verified that the trait is still at its economic optimum. It could very well be the case that via correlated selection responses, the trait changes, even if the economic weight of the trait itself is set to zero. In case where the trait is no longer at its economic optimum it would receive automatically an economic weight different from zero such that the trait mean moves back towards its economic optimum. Such an iterative strategy can be used for traits with a certain economic optimum. Examples of such traits are fatness in beef or in pigs.</p>
+<p>Hence the previous paragraph shows that it is not really necessary to use the tool of restricted indices or desired gains indices. The use of economic selection indices is fully sufficient even for traits with an intermediate economic optimum.</p>
+</div>
+<div id="gel-implbp-devbg" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Development Of The Breeding Goal<a href="gel-implbp.html#gel-implbp-devbg" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In this section, we focus on the development and the design of a breeding goal that focuses on the economic merit of the production of marketable animal goods. According to <span class="citation">(<a href="#ref-Phocas1998" role="doc-biblioref">Phocas et al. 1998</a>)</span>, three points are to be considered when developing such a breeding goal.</p>
+<ol style="list-style-type: decimal">
+<li>description of production system</li>
+<li>modelling the profit for a typical herd</li>
+<li>derivation of economic values</li>
+</ol>
+<p>For reasons of simplicity we are assuming that all herds have the same production system. It is important to note here that in a hierarchical breeding program such as shown in Figure <a href="gel-implbp.html#fig:gel-implbp-hier-bp">3.1</a>, the herd described in subsection <a href="gel-implbp.html#gel-implbp-descprodsys">3.3.1</a> comes from the production sector situated at the bottom of the triangle. The reason for using a herd from the production tier as the basis of the description of the production is that the breeding and possibly the multiplier sections of the breeding program have to adapt their breeding animals to the needs and requirements of the production herds. Looking at the different participants of the breeding program as a client-supplier relationship, the producers are clients of the breeding and the multiplier farms for young production animals. These animals must meet the requirements of the production farms. As a consequence of that the breeding and multiplier farms have to raise young animals that fit the needs of the production farms. This is done by designing the breeding program implemented in the breeding farms according to the needs of the production farms. The implementation of the breeding program must yield tools for the breeding farms to be able to select the best animals as parents. One possibility of such an implementation is shown here for an idealized and simplified situation.</p>
+<div id="gel-implbp-descprodsys" class="section level3 hasAnchor" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> Description Of Production System<a href="gel-implbp.html#gel-implbp-descprodsys" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A production system is defined by its required inputs consisting of feed, housing, labor and other fixed costs and by the products (output) that are sold. Furthermore housing systems, feeding regimes and other management components that affect the production costs are important properties of a production system. On the output-side it is important to know what type of markets the animal products can be sold to.</p>
+<p>Overall the production system helps us to identify which traits of the animals have an economic impact. Those traits with an economic importance for the production system have to be included in the aggregate genotype.</p>
+<p>Figure <a href="gel-implbp.html#fig:gel-implbp-prodsys">3.2</a> illustrates a production system by showing the most important components affecting the profitability of a typical herd.</p>
+<div class="figure"><span style="display:block;" id="fig:gel-implbp-prodsys"></span>
+<img src="odg/gel-implbp-prodsys.png" alt="Production system illustrated by a typical herd" width="11cm" />
+<p class="caption">
+Figure 3.2: Production system illustrated by a typical herd
+</p>
+</div>
+<p>In our example, the assumed herd has <span class="math inline">\(N\)</span> cows. Cows are inseminated using artificial insemination. Once a year the cows are expected to produce a calf. The calves are raised, fattened and sold as slaughter animals. From the <span class="math inline">\(N\)</span> cows each years a proportion of <span class="math inline">\(0.18\)</span> is culled and is replaced with young heifers which are bought from breeding or multiplier farms. Figure <a href="gel-implbp.html#fig:gel-implbp-demogherd">3.3</a> corresponds to a simplified version of Figure 1 of <span class="citation">(<a href="#ref-Phocas1998" role="doc-biblioref">Phocas et al. 1998</a>)</span>.</p>
+<div class="figure"><span style="display:block;" id="fig:gel-implbp-demogherd"></span>
+<img src="odg/gel-implbp-demogherd.png" alt="Assumed demography of typical production herd" width="11cm" />
+<p class="caption">
+Figure 3.3: Assumed demography of typical production herd
+</p>
+</div>
+</div>
+</div>
+<div id="gel-implbp-dettrint" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Determine Traits Of Economic Interest<a href="gel-implbp.html#gel-implbp-dettrint" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Inputs shown in Figure <a href="gel-implbp.html#fig:gel-implbp-prodsys">3.2</a> generate costs (<span class="math inline">\(C\)</span>) and Outputs generate revenues (<span class="math inline">\(R\)</span>). The difference between revenues and costs corresponds to profit (<span class="math inline">\(P\)</span>) which is the key objective of the whole system that we want to improve. The traits of the animals in the production system which have an influence on the profit of the system are grouped together in the set of the <strong>economically important</strong> traits. The economically important traits are included in the aggregate genotype which is then used as selection criterion for the breeding animals.</p>
+<p>For our example production herd, we are focusing on the carcass performance traits</p>
+<ul>
+<li>carcass conformation (CC)</li>
+<li>carcass fatness (CF) and</li>
+<li>carcass weight (CW).</li>
+</ul>
+<p>At this stage of our analysis, we are ignoring all traits related to reproduction or survival of calves which are also important for the economic profitability of the production herd. For the moment, we focus on the three traits listed above. This means, we construct the aggregate genotype based on the three traits <em>CC</em>, <em>CF</em>, and <em>CW</em>. The weights of the different traits in the aggregate genotype is the result from the derivation of economic values listed as point 3 of subsection <a href="gel-implbp.html#gel-implbp-devbg">3.3</a>.</p>
+</div>
+<div id="gel-implbp-geneval" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> Genetic Evaluation<a href="gel-implbp.html#gel-implbp-geneval" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Once we have determined the traits of economic interest as described in subsection <a href="gel-implbp.html#gel-implbp-dettrint">3.4</a>, we can start to have a look at the genetic part of our analysis of the breeding program. This is done in a genetic evaluation which consists of two parts</p>
+<ol style="list-style-type: decimal">
+<li>Variance components estimation</li>
+<li>Prediction of breeding values.</li>
+</ol>
+<p>In a practical analysis both parts are using linear mixed effect models with the traits of interest as response variables (<span class="math inline">\(y\)</span>) and other characteristics as predictor variables (<span class="math inline">\(x\)</span>). The difference between the two evaluation parts are the results that are of interest. In the first part we are primarily looking for the estimates of the variance components in the model. The second part produces predictions of the breeding values for all breeding animals.</p>
+<p>Depending on the number of predictor variables that are available in the dataset that we have available from our breeding organisation, we first have to separate the important predictor variables from the variables that do not have an important effect on the response variable. This separation is done with a preparatory model selection step. In short, we are using all predictor variables available in a fixed linear effects model with the trait of interest as the response variable. Then we are in turn, eliminating the response variable with the smallest impact until a previously chosen model selection criterion is optimized. The remaining set of predictor variables in the optimal model is then used in the linear mixed effects model to estimate variance components and to predict breeding values.</p>
+<p>In the chapters that follow, we are having a closer look at how to do the model selection and how to perform the two parts of the genetic evaluation.</p>
+
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div class="csl-entry">
+Brascamp, E W. 1984. <span>“<span class="nocase">Selection indices with constraints</span>.”</span> <em>Anim. Breed. Abstr</em> 52 (9): 645–54. <a href="http://scholar.google.com/scholar?hl=en{\&amp;}btnG=Search{\&amp;}q=intitle:Selection+indices+with+constraints{\#}0">http://scholar.google.com/scholar?hl=en{\&amp;}btnG=Search{\&amp;}q=intitle:Selection+indices+with+constraints{\#}0</a>.
+</div>
+<div class="csl-entry">
+Bundesrat. 2012. <span>“<span class="nocase">Verordnung <span class="nocase">ü</span>ber die Tierzucht</span>.”</span> <a href="https://www.admin.ch/opc/de/classified-compilation/19880226/201510010000/814.011.pdf">https://www.admin.ch/opc/de/classified-compilation/19880226/201510010000/814.011.pdf</a>.
+</div>
+<div class="csl-entry">
+Gibson, J P, and B W Kennedy. 1990. <span>“<span class="nocase">The use of constrained selection indexes in breeding for economic merit</span>.”</span> <em>Theoretical and Applied Genetics</em> 80 (6): 801–5. https://doi.org/<a href="https://doi.org/10.1007/BF00224195">https://doi.org/10.1007/BF00224195</a>.
+</div>
+<div class="csl-entry">
+Götz, Kay-Uwe. 2014. <span>“<span class="nocase">Quantitative Genetik und Zuchtplanung</span>.”</span> Grub.
+</div>
+<div class="csl-entry">
+Lehmann, Bernard, Eva Reinhard, Adrian Aebi, Christian Hofer, Andrea Leute, and Dominique Kohli. 2018. <span>“<span>Strategie Tierzucht 2030</span>.”</span> <a href="https://www.newsd.admin.ch/newsd/message/attachments/52496.pdf">https://www.newsd.admin.ch/newsd/message/attachments/52496.pdf</a>.
+</div>
+<div class="csl-entry">
+Phocas, F., C. Bloch, P. Chapelle, F. B’echerel, G. Renand, and F. M’enissier. 1998. <span>“<span class="nocase">Developing a breeding objective for a French purebred beef cattle selection programme</span>.”</span> <em>Livestock Production Science</em> 57 (1): 49–65. <a href="https://doi.org/10.1016/S0301-6226(98)00157-2">https://doi.org/10.1016/S0301-6226(98)00157-2</a>.
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-Brascamp1984" class="csl-entry">
+Brascamp, E W. 1984. <span>“<span class="nocase">Selection indices with constraints</span>.”</span> <em>Anim. Breed. Abstr</em> 52 (9): 645–54. <a href="http://scholar.google.com/scholar?hl=en{\&amp;}btnG=Search{\&amp;}q=intitle:Selection+indices+with+constraints{\#}0">http://scholar.google.com/scholar?hl=en{\&amp;}btnG=Search{\&amp;}q=intitle:Selection+indices+with+constraints{\#}0</a>.
+</div>
+<div id="ref-Gibson1990" class="csl-entry">
+Gibson, J P, and B W Kennedy. 1990. <span>“<span class="nocase">The use of constrained selection indexes in breeding for economic merit</span>.”</span> <em>Theoretical and Applied Genetics</em> 80 (6): 801–5. https://doi.org/<a href="https://doi.org/10.1007/BF00224195">https://doi.org/10.1007/BF00224195</a>.
+</div>
+<div id="ref-Phocas1998" class="csl-entry">
+Phocas, F., C. Bloch, P. Chapelle, F. B’echerel, G. Renand, and F. M’enissier. 1998. <span>“<span class="nocase">Developing a breeding objective for a French purebred beef cattle selection programme</span>.”</span> <em>Livestock Production Science</em> 57 (1): 49–65. <a href="https://doi.org/10.1016/S0301-6226(98)00157-2">https://doi.org/10.1016/S0301-6226(98)00157-2</a>.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="gel-bprog.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/charlotte-ngs/pigsciencess2022/edit/main/cn/03-psb-implbp.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["cn_psb_ss2022.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
