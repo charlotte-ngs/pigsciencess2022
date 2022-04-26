@@ -6,5 +6,8 @@ articles:
   course_exercises: course_exercises.html
   course_notes: course_notes.html
   course_solutions: course_solutions.html
-last_built: 2022-04-26T11:39Z
+last_built: 2022-04-26T11:44Z
+urls:
+  reference: https://charlotte-ngs.github.io/pigsciencess2022/reference
+  article: https://charlotte-ngs.github.io/pigsciencess2022/articles
 
