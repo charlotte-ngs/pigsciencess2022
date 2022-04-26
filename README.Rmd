@@ -1,0 +1,65 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+__Welcome__ to 
+
+[751-6602-00L  Pig Science](http://www.vvz.ethz.ch/Vorlesungsverzeichnis/lerneinheit.view?semkez=2022S&ansicht=ALLE&lerneinheitId=157576&lang=en)
+
+
+## Information
+- Lecturer: S. Neuenschwander, C. Kasper, G. Bee, P. von Rohr
+- Date: Wednesday 8-10
+- Mode: hybrid - in person and via zoom
+- Room: LFW B2
+- Moodle: https://moodle-app2.let.ethz.ch/course/view.php?id=16601
+
+
+## Questions
+Questions can be asked during the lecture and during the exercise hour or via e-mail: 
+
+- Peter von Rohr (peter.vonrohr `at` usys.ethz.ch)
+
+
+## Lecture Program
+```{r CourseProgram, echo=FALSE, results='asis'}
+### # header names of tables
+vecTableHeaders <- c("Week", "Date", "Topic")
+# define course start date
+dCourseStart <- as.Date("2022/04/27")
+# set number of weeks in semester
+nNrSemesterWeeks <- 3
+# define columns for weaks, dates, and subjects
+Week <- 1:nNrSemesterWeeks
+Date <- format(seq(dCourseStart, by = "week", length.out = nNrSemesterWeeks), "%d.%m")
+Topic <- vector(mode = "character", length = nNrSemesterWeeks)
+# subjects per week
+Topic[1] <- "Extension of Breeding Programs"
+Topic[2] <- "Genomic Selection in Pig Breeding"
+Topic[3] <- "Definition of Breeding Program via Aggregate Genotype"
+
+dfCnTable <- data.frame(Week, Date, Topic, stringsAsFactors = FALSE)
+colnames(dfCnTable) <- vecTableHeaders
+knitr::kable(dfCnTable)
+```
+
+
+## License
+
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+
+
+```{r latest-change, echo=FALSE, results='asis'}
+cat(rmdhelp::get_latest_change())
+```
