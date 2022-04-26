@@ -1,3 +1,7 @@
+# pigsciencess2022 0.1.1
+
+* Course notes
+
 # pigsciencess2022 0.1.0
 
 * Released initial version of website
