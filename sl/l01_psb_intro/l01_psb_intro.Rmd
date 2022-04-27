@@ -82,7 +82,14 @@ knitr::include_graphics(path = "odg/psb-terminology.png")
     + chicken breeding and egg producers
 
 
-## History
+## History I
+
+```{r psb-hist-dev-lb, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg", out.width="100%"}
+#rmdhelp::use_odg_graphic(ps_path = "odg/psb-hist-dev-lb.odg")
+knitr::include_graphics(path = "odg/psb-hist-dev-lb.png")
+```
+
+## History II
 * Formations of breeding organisation (BO)
 * Tasks of BO: herdbooks and certification
 * Crisis at beginning of $20^{th}$ century lead to federal regulations
@@ -347,4 +354,4 @@ $$a_x = \frac{\partial P}{\partial \mu_x}$$
     1. variance components estimation
     2. prediction of breeding values
 
-
+ 
