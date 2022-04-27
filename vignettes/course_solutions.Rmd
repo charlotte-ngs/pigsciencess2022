@@ -16,3 +16,7 @@ knitr::opts_chunk$set(
 
 This page contains solutions to exercises.
 
+
+```{r latest-change, echo=FALSE, results='asis'}
+cat(rmdhelp::get_latest_change())
+```

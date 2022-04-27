@@ -28,3 +28,7 @@ tbl_cn <- tibble::tibble(Nr = c(1:3),
 knitr::kable(tbl_cn)
 ```
 
+
+```{r latest-change, echo=FALSE, results='asis'}
+cat(rmdhelp::get_latest_change())
+```

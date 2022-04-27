@@ -33,3 +33,9 @@ knitr::kable(tbl_sl)
 
 ## Videos
 
+
+
+```{r latest-change, echo=FALSE, results='asis'}
+cat(rmdhelp::get_latest_change())
+```
+

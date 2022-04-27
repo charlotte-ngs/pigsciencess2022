@@ -16,3 +16,17 @@ knitr::opts_chunk$set(
 
 This page contains a list of exercises.
 
+```{r, echo=FALSE}
+s_ex_url <- "https://charlotte-ngs.github.io/pigsciencess2022/ex/"
+tbl_ex <- tibble::tibble(Nr = c(1),
+                         Date = "2022-04-27",
+                         Topic = c(
+                           paste0("[Introduction to Breeding Programs](", s_ex_url, "psb_ex01.pdf)", collapse = "")
+                         ))
+knitr::kable(tbl_ex)
+```
+
+
+```{r latest-change, echo=FALSE, results='asis'}
+cat(rmdhelp::get_latest_change())
+```
