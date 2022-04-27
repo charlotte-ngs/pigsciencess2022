@@ -1,3 +1,7 @@
+# pigsciencess2022 0.1.2
+
+* Slides l01_psb_intro
+
 # pigsciencess2022 0.1.1
 
 * Course notes
