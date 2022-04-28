@@ -33,9 +33,29 @@ knitr::kable(tbl_sl)
 
 ## Videos
 
+```{r, echo=FALSE}
+tbl_video <- tibble::tibble(Nr = c(1),
+                            Date = c("2022-0427"),
+                            Topic = c(
+                              "[Introduction to Breeding Programs](https://youtu.be/cF75-GB6Mz8)"
+                            ))
+knitr::kable(tbl_video)
+```
+
+
+## Misc
+
+```{r, echo=FALSE}
+s_misc_url <- "https://charlotte-ngs.github.io/pigsciencess2022/misc/"
+tbl_misc <- tibble::tibble(Nr = c(1),
+                           Date = c("2022-04-27"),
+                           Topic = c(
+                             "[SRF 10vor10 Report on breeding](https://www.srf.ch/play/tv/redirect/detail/51803eb1-9313-45f1-bee3-833fc3f79d97)"
+                           ))
+knitr::kable(tbl_misc)
+```
 
 
 ```{r latest-change, echo=FALSE, results='asis'}
 cat(rmdhelp::get_latest_change())
 ```
-
