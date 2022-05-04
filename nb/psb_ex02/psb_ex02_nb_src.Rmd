@@ -31,7 +31,7 @@ tbl_modsel <- readr::read_csv2(s_data_file)
 ```
 
 
-## Problem 1Model Selection
+## Problem 1: Model Selection
 We assume that we have a dataset for the response variable `carcass weight` (CW) and for some predictor variables
 
 * sex (`sex`)
