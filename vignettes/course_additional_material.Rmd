@@ -45,6 +45,19 @@ knitr::kable(tbl_video)
 ```
 
 
+## Datasets
+
+```{r, echo=FALSE}
+s_data_url <- "https://charlotte-ngs.github.io/pigsciencess2022/data/"
+tbl_data <- tibble::tibble(Nr = c(1),
+                           Date = c(2022-05-04),
+                           Topic = c(
+                             paste0("[Model Selection and Variance Components](", s_data_url, "bw_bc_rand_pred.csv)", collapse = "")
+                           ))
+knitr::kable(tbl_data)
+```
+
+
 ## Misc
 
 ```{r, echo=FALSE}

@@ -1,0 +1,84 @@
+---
+title: "Model Selection and Variance Components"
+output: html_notebook
+params:
+  isonline:
+    label: 'Online (y/n)'
+    value: FALSE
+    choices: [TRUE, FALSE]
+---
+
+# Disclaimer
+Data and code for the demo on model selection and variance components are shown in this notebook.
+
+
+# Data
+The data is available from the following path
+
+```{r, echo=FALSE}
+s_ms_vc_path <- "https://charlotte-ngs.github.io/pigsciencess2022/data/bw_bc_rand_pred.csv"
+if (!params$isonline)
+  s_ms_vc_path <- file.path(here::here(), "docs", "data", "bw_bc_rand_pred.csv")
+cat(s_ms_vc_path)
+```
+
+Data is read from file by
+
+```{r}
+tbl_ms_vc <- readr::read_csv(file = s_ms_vc_path)
+tbl_ms_vc
+```
+
+
+# Descriptive Statistics
+Pairs plot gives an overview
+
+```{r}
+pairs(tbl_ms_vc)
+```
+
+Ignore first column with animal IDs
+
+```{r}
+pairs(tbl_ms_vc[,c("Breast Circumference", "Body Weight", "RandPred")])
+```
+
+Alternative selection with `dplyr::select()`
+```{r}
+library(dplyr)
+pairs(tbl_ms_vc %>% select(-Animal))
+```
+
+
+# Model Selection
+Do predictors in the model explain any variability of response at all
+
+```{r}
+aov_bw_bc_rp <- aov(formula = `Body Weight` ~ `Breast Circumference` + RandPred, 
+                    data = tbl_ms_vc)
+summary(aov_bw_bc_rp)
+```
+
+Most of the variability of the response is explained by `Breast Circumference`. `RandPred` does not explain a lot.
+
+The regression tell something about how much the response changes when the predictor changes one unit
+
+```{r}
+lm_bw_bc_rp <- lm(formula = `Body Weight` ~ `Breast Circumference` + RandPred, 
+                    data = tbl_ms_vc)
+summary(lm_bw_bc_rp)
+
+```
+
+Select the best model
+
+```{r}
+tbl_ms_vc_olsrr <- tbl_ms_vc %>% rename(BW = `Body Weight`, BC = `Breast Circumference`)
+lm_ms_vc_olsrr <- lm(BW ~ BC + RandPred, data = tbl_ms_vc_olsrr)
+olsrr::ols_step_best_subset(lm_ms_vc_olsrr)
+```
+
+```{r}
+MASS::stepAIC(lm_ms_vc_olsrr)
+```
+
