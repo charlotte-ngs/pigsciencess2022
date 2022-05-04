@@ -232,9 +232,9 @@ pre code {
 <p>Data is read from file by</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-output-begin eyJkYXRhIjoiUm93czogMTAgQ29sdW1uczogNFxu4pSA4pSAIENvbHVtbiBzcGVjaWZpY2F0aW9uIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgFxuRGVsaW1pdGVyOiBcIixcIlxuZGJsICg0KTogQW5pbWFsLCBCcmVhc3QgQ2lyY3VtZmVyZW5jZSwgQm9keSBXZWlnaHQsIFJhbmRQcmVkXG5cbuKEuSBVc2UgYHNwZWMoKWAgdG8gcmV0cmlldmUgdGhlIGZ1bGwgY29sdW1uIHNwZWNpZmljYXRpb24gZm9yIHRoaXMgZGF0YS5cbuKEuSBTcGVjaWZ5IHRoZSBjb2x1bW4gdHlwZXMgb3Igc2V0IGBzaG93X2NvbF90eXBlcyA9IEZBTFNFYCB0byBxdWlldCB0aGlzIG1lc3NhZ2UuXG4ifQ== -->
+<!-- rnb-output-begin eyJkYXRhIjoiUm93czogMTAgQ29sdW1uczogNFxu4pSA4pSAIENvbHVtbiBzcGVjaWZpY2F0aW9uIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgFxuRGVsaW1pdGVyOiBcIixcIlxuZGJsICg0KTogQW5pbWFsLCBCcmVhc3QgQ2lyY3VtZmVyZW5jZSwgQm9keSBXZWlnaHQsIFJhbmRQcmVkXG5cbuKEuSBVc2UgYHNwZWMoKWAgdG8gcmV0cmlldmUgdGhlIGZ1bGwgY29sdW1uIHNwZWNpZmljYXRpb24gZm9yIHRoaXMgZGF0YS5cbuKEuSBTcGVjaWZ5IHRoZSBjb2x1bW4gdHlwZXMgb3Igc2V0IGBzaG93X2NvbF90eXBlcyA9IEZBTFNFYCB0byBxdWlldCB0aGlzIG1lc3NhZ2UuXG4ifQ== -->
 <pre><code>Rows: 10 Columns: 4
-── Column specification ─────────────────────────────────────────────────────────────────────────────────────────────────────────
+── Column specification ────────────────────────────────────────────────────────────────────────────────────────────────────────
 Delimiter: &quot;,&quot;
 dbl (4): Animal, Breast Circumference, Body Weight, RandPred
 
@@ -371,10 +371,94 @@ Coefficients:
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
+</div>
+<div id="variance-components" class="section level1">
+<h1>Variance Components</h1>
+<p>Adding sires to the data</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInNwZWNfdGJsX2RmIiwidGJsX2RmIiwidGJsIiwiZGF0YS5mcmFtZSJdLCJucm93IjoxMCwibmNvbCI6NSwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyIxMCDDlyA1Il19fSwicmRmIjoiSDRzSUFBQUFBQUFBQTMyU3ZVN0RNQkRITDJrQ2JWQ3JTblJnWUlnUWE2TWlGalpDUWN5b2dPaUlTWncySW5VcUp4VWcwWTlINlNQd0NEd0tJeU1UWTRPVG5LdktBaXhadjd1L1ArN3ZTM29YL1dPcmJ3RkFCUXhOZzRvcFFqQnZieTdiSndDR0xoSU5ES2psZkJhYmR2TlZNUnRpV3FkZlVBd1hrRlZrRTlsQzdpSDNrVGJ5QUhrSWNoVDN1Z0hxZ1kxMGtmY0tGOGdsOGgzNVVYS2czRHNkbC9wcmFkeWRsVWJkS2Q0M3g3cXp0NUtMRHVxNGY0NzNMajRWdjlLSDZsUHhzOVpsdnZ4MVB5ajlWZW5DSDZ6K1QrV0Rtb3lNYUNLQ1pwNmd1SFhHd2hHSk1HdDFPU1ZKYXArSDNKdU1Bc29wOHlpdTdYUmovOFcrbytGZ21LSlU3UkhtWDNIcVkyNWNoNXdxVldzOGZuSms1YnFZZXQ2OExNdStWWHRlUkJKcFQ0cVdUMUxpQkZ5Y0Y5bEtPYklkajlNd1p1S1FMbi9VemNNYVY0VG1oT1ZPL0xZM25MREg5bEVucjFDc2w2T09zYlVSbTJWTlBWTWJSOWtnWkxJNVprUWVxT3hpUXp5NWVMRXo1aUdUemJLRW1qaHBuSzY3YlhseEpKWGljYkQ2QWR0OUhrK2dBd0FBIn0= -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Animal"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["Breast Circumference"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Body Weight"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["RandPred"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["Sire"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"176","3":"471","4":"180","5":"1"},{"1":"2","2":"177","3":"463","4":"178","5":"1"},{"1":"3","2":"178","3":"481","4":"179","5":"1"},{"1":"4","2":"179","3":"470","4":"182","5":"2"},{"1":"5","2":"179","3":"496","4":"183","5":"2"},{"1":"6","2":"180","3":"491","4":"179","5":"2"},{"1":"7","2":"181","3":"518","4":"183","5":"3"},{"1":"8","2":"182","3":"511","4":"181","5":"3"},{"1":"9","2":"183","3":"510","4":"179","5":"3"},{"1":"10","2":"184","3":"541","4":"182","5":"3"}],"options":{"columns":{"min":{},"max":[10],"total":[5]},"rows":{"min":[10],"max":[10],"total":[10]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Convert sire column to factor</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInNwZWNfdGJsX2RmIiwidGJsX2RmIiwidGJsIiwiZGF0YS5mcmFtZSJdLCJucm93IjoxMCwibmNvbCI6NSwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyIxMCDDlyA1Il19fSwicmRmIjoiSDRzSUFBQUFBQUFBQTIxU3UwN0RNQlIxWHRBR1VWV2lBd05EaEZnYlVicXdFUXBpUmdWRVIweml0QkdwVXprcEQ0aytQcVdmd0Nmd0tZeU1USXdOVG5JZFdxdVJyczcxOFgwZXAzdlphNXM5RXlHa0lWMVJrR1p3RnhsM3QxZk5VNFIwbFI4VXBLTnFocTg4YUMrNzVWYmpacDc5b1B4ekVHQUZzQTdZQU53SFBBQzBBQThCajVENDhycU9EN3h2QVRxQUR4TE9BUmVBbjRCZkJmYWx1cE5Sd2I4WGd6dlRZbEJuQXZWbTBIZjZVZUQ4R0hpSW4wSGQrYmMwcjVoRG5sT2FwK1RGZWJFeG51dThtOVZGbWZqL3BxNll0bTVyRDdVVmttY1N4dHlyNTdmd2ZDM2huQWluTFNVYWJvaGprVmRXODdHYlJJeDdTem1jNGlFUjRZWUlQNmZCRUlkd2FuUVl3WEZpWFFUTUhROTl3Z2gxQ2R6dGRDTHZ6Ym9uUVgrUUFGWHBZdXBkTStMQldiOEpHSkc2VmxuMFlvdk9tVXhxSm42YXByOUZvSlpLQzVnZVRyRHRNNTZ5WVludGFKUUVFZVhGVlBGdnJ5WXJUQ0xxWTVvMTk1cnVZRXlmbXEzV3lrTWhtRWdCVHZoRzBWTVhrNVZhRWRvUHFORERDUEVqRWNMVitKYjVrdmFJQlZUb1kzSTJ0cE1vS1FVMjNTZ1VUTDRjV3Y0Qm93MStvOU1EQUFBPSJ9 -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Animal"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["Breast Circumference"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Body Weight"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["RandPred"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["Sire"],"name":[5],"type":["fctr"],"align":["left"]}],"data":[{"1":"1","2":"176","3":"471","4":"180","5":"1"},{"1":"2","2":"177","3":"463","4":"178","5":"1"},{"1":"3","2":"178","3":"481","4":"179","5":"1"},{"1":"4","2":"179","3":"470","4":"182","5":"2"},{"1":"5","2":"179","3":"496","4":"183","5":"2"},{"1":"6","2":"180","3":"491","4":"179","5":"2"},{"1":"7","2":"181","3":"518","4":"183","5":"3"},{"1":"8","2":"182","3":"511","4":"181","5":"3"},{"1":"9","2":"183","3":"510","4":"179","5":"3"},{"1":"10","2":"184","3":"541","4":"182","5":"3"}],"options":{"columns":{"min":{},"max":[10],"total":[5]},"rows":{"min":[10],"max":[10],"total":[10]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Simplify computations with a balanced dataset</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>ANOVA</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgRGYgU3VtIFNxIE1lYW4gU3EgRiB2YWx1ZSAgUHIoPkYpICAgXG5TaXJlICAgICAgICAgMiAyNjUxLjYgIDEzMjUuOCAgIDEzLjY4IDAuMDA1ODEgKipcblJlc2lkdWFscyAgICA2ICA1ODEuMyAgICA5Ni45ICAgICAgICAgICAgICAgICAgIFxuLS0tXG5TaWduaWYuIGNvZGVzOiAgMCDigJgqKirigJkgMC4wMDEg4oCYKirigJkgMC4wMSDigJgq4oCZIDAuMDUg4oCYLuKAmSAwLjEg4oCYIOKAmSAxXG4ifQ== -->
+<pre><code>            Df Sum Sq Mean Sq F value  Pr(&gt;F)   
+Sire         2 2651.6  1325.8   13.68 0.00581 **
+Residuals    6  581.3    96.9                   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>What is the variance of the sire effect? Use the fact that</p>
+<p><span class="math display">\[E(MSQ_R) = \sigma_e^2\]</span> Hence <span class="math inline">\(\widehat{\sigma_e^2} = MSQ_R = 96.8888889\)</span>.</p>
+<p>Furthermore</p>
+<p><span class="math display">\[E(MSQ_S) = n_S * \sigma_S^2 + \sigma_e^2 \]</span></p>
+<p>Hence</p>
+<p><span class="math display">\[\widehat{\sigma_S^2} = \frac{MSQ_S - MSQ_R}{n_S} = 
+\frac{1325.7777778 - 96.8888889}{3}\]</span></p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDQwOS42Mjk2XG4ifQ== -->
+<pre><code>[1] 409.6296</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>lme4</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-output-begin eyJkYXRhIjoiTGluZWFyIG1peGVkIG1vZGVsIGZpdCBieSBSRU1MIFsnbG1lck1vZCddXG5Gb3JtdWxhOiBgQm9keSBXZWlnaHRgIH4gKDEgfCBTaXJlKVxuICAgRGF0YTogdGJsX21zX3ZjX3NpcmVcblxuUkVNTCBjcml0ZXJpb24gYXQgY29udmVyZ2VuY2U6IDY2LjdcblxuU2NhbGVkIHJlc2lkdWFsczogXG4gICAgIE1pbiAgICAgICAxUSAgIE1lZGlhbiAgICAgICAzUSAgICAgIE1heCBcbi0xLjYyNDYyIC0wLjIwNDY3IC0wLjAzMzI1ICAwLjY3NzkwICAxLjAxNjc5IFxuXG5SYW5kb20gZWZmZWN0czpcbiBHcm91cHMgICBOYW1lICAgICAgICBWYXJpYW5jZSBTdGQuRGV2LlxuIFNpcmUgICAgIChJbnRlcmNlcHQpIDQwOS42MyAgIDIwLjIzOSAgXG4gUmVzaWR1YWwgICAgICAgICAgICAgIDk2Ljg5ICAgIDkuODQzICBcbk51bWJlciBvZiBvYnM6IDksIGdyb3VwczogIFNpcmUsIDNcblxuRml4ZWQgZWZmZWN0czpcbiAgICAgICAgICAgIEVzdGltYXRlIFN0ZC4gRXJyb3IgdCB2YWx1ZVxuKEludGVyY2VwdCkgICA0OTAuMTEgICAgICAxMi4xNCAgIDQwLjM4XG4ifQ== -->
+<pre><code>Linear mixed model fit by REML [&#39;lmerMod&#39;]
+Formula: `Body Weight` ~ (1 | Sire)
+   Data: tbl_ms_vc_sire
+
+REML criterion at convergence: 66.7
+
+Scaled residuals: 
+     Min       1Q   Median       3Q      Max 
+-1.62462 -0.20467 -0.03325  0.67790  1.01679 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ Sire     (Intercept) 409.63   20.239  
+ Residual              96.89    9.843  
+Number of obs: 9, groups:  Sire, 3
+
+Fixed effects:
+            Estimate Std. Error t value
+(Intercept)   490.11      12.14   40.38</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiTW9kZWwgU2VsZWN0aW9uIGFuZCBWYXJpYW5jZSBDb21wb25lbnRzIgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKcGFyYW1zOgogIGlzb25saW5lOgogICAgbGFiZWw6ICdPbmxpbmUgKHkvbiknCiAgICB2YWx1ZTogRkFMU0UKICAgIGNob2ljZXM6IFtUUlVFLCBGQUxTRV0KLS0tCgojIERpc2NsYWltZXIKRGF0YSBhbmQgY29kZSBmb3IgdGhlIGRlbW8gb24gbW9kZWwgc2VsZWN0aW9uIGFuZCB2YXJpYW5jZSBjb21wb25lbnRzIGFyZSBzaG93biBpbiB0aGlzIG5vdGVib29rLgoKCiMgRGF0YQpUaGUgZGF0YSBpcyBhdmFpbGFibGUgZnJvbSB0aGUgZm9sbG93aW5nIHBhdGgKCmBgYHtyLCBlY2hvPUZBTFNFfQpzX21zX3ZjX3BhdGggPC0gImh0dHBzOi8vY2hhcmxvdHRlLW5ncy5naXRodWIuaW8vcGlnc2NpZW5jZXNzMjAyMi9kYXRhL2J3X2JjX3JhbmRfcHJlZC5jc3YiCmlmICghcGFyYW1zJGlzb25saW5lKQogIHNfbXNfdmNfcGF0aCA8LSBmaWxlLnBhdGgoaGVyZTo6aGVyZSgpLCAiZG9jcyIsICJkYXRhIiwgImJ3X2JjX3JhbmRfcHJlZC5jc3YiKQpjYXQoc19tc192Y19wYXRoKQpgYGAKCkRhdGEgaXMgcmVhZCBmcm9tIGZpbGUgYnkKCmBgYHtyfQp0YmxfbXNfdmMgPC0gcmVhZHI6OnJlYWRfY3N2KGZpbGUgPSBzX21zX3ZjX3BhdGgpCnRibF9tc192YwpgYGAKCgojIERlc2NyaXB0aXZlIFN0YXRpc3RpY3MKUGFpcnMgcGxvdCBnaXZlcyBhbiBvdmVydmlldwoKYGBge3J9CnBhaXJzKHRibF9tc192YykKYGBgCgpJZ25vcmUgZmlyc3QgY29sdW1uIHdpdGggYW5pbWFsIElEcwoKYGBge3J9CnBhaXJzKHRibF9tc192Y1ssYygiQnJlYXN0IENpcmN1bWZlcmVuY2UiLCAiQm9keSBXZWlnaHQiLCAiUmFuZFByZWQiKV0pCmBgYAoKQWx0ZXJuYXRpdmUgc2VsZWN0aW9uIHdpdGggYGRwbHlyOjpzZWxlY3QoKWAKYGBge3J9CmxpYnJhcnkoZHBseXIpCnBhaXJzKHRibF9tc192YyAlPiUgc2VsZWN0KC1BbmltYWwpKQpgYGAKCgojIE1vZGVsIFNlbGVjdGlvbgpEbyBwcmVkaWN0b3JzIGluIHRoZSBtb2RlbCBleHBsYWluIGFueSB2YXJpYWJpbGl0eSBvZiByZXNwb25zZSBhdCBhbGwKCmBgYHtyfQphb3ZfYndfYmNfcnAgPC0gYW92KGZvcm11bGEgPSBgQm9keSBXZWlnaHRgIH4gYEJyZWFzdCBDaXJjdW1mZXJlbmNlYCArIFJhbmRQcmVkLCAKICAgICAgICAgICAgICAgICAgICBkYXRhID0gdGJsX21zX3ZjKQpzdW1tYXJ5KGFvdl9id19iY19ycCkKYGBgCgpNb3N0IG9mIHRoZSB2YXJpYWJpbGl0eSBvZiB0aGUgcmVzcG9uc2UgaXMgZXhwbGFpbmVkIGJ5IGBCcmVhc3QgQ2lyY3VtZmVyZW5jZWAuIGBSYW5kUHJlZGAgZG9lcyBub3QgZXhwbGFpbiBhIGxvdC4KClRoZSByZWdyZXNzaW9uIHRlbGwgc29tZXRoaW5nIGFib3V0IGhvdyBtdWNoIHRoZSByZXNwb25zZSBjaGFuZ2VzIHdoZW4gdGhlIHByZWRpY3RvciBjaGFuZ2VzIG9uZSB1bml0CgpgYGB7cn0KbG1fYndfYmNfcnAgPC0gbG0oZm9ybXVsYSA9IGBCb2R5IFdlaWdodGAgfiBgQnJlYXN0IENpcmN1bWZlcmVuY2VgICsgUmFuZFByZWQsIAogICAgICAgICAgICAgICAgICAgIGRhdGEgPSB0YmxfbXNfdmMpCnN1bW1hcnkobG1fYndfYmNfcnApCgpgYGAKClNlbGVjdCB0aGUgYmVzdCBtb2RlbAoKYGBge3J9CnRibF9tc192Y19vbHNyciA8LSB0YmxfbXNfdmMgJT4lIHJlbmFtZShCVyA9IGBCb2R5IFdlaWdodGAsIEJDID0gYEJyZWFzdCBDaXJjdW1mZXJlbmNlYCkKbG1fbXNfdmNfb2xzcnIgPC0gbG0oQlcgfiBCQyArIFJhbmRQcmVkLCBkYXRhID0gdGJsX21zX3ZjX29sc3JyKQpvbHNycjo6b2xzX3N0ZXBfYmVzdF9zdWJzZXQobG1fbXNfdmNfb2xzcnIpCmBgYAoKYGBge3J9Ck1BU1M6OnN0ZXBBSUMobG1fbXNfdmNfb2xzcnIpCmBgYAoK</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiTW9kZWwgU2VsZWN0aW9uIGFuZCBWYXJpYW5jZSBDb21wb25lbnRzIgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKcGFyYW1zOgogIGlzb25saW5lOgogICAgbGFiZWw6ICdPbmxpbmUgKHkvbiknCiAgICB2YWx1ZTogRkFMU0UKICAgIGNob2ljZXM6IFtUUlVFLCBGQUxTRV0KLS0tCgojIERpc2NsYWltZXIKRGF0YSBhbmQgY29kZSBmb3IgdGhlIGRlbW8gb24gbW9kZWwgc2VsZWN0aW9uIGFuZCB2YXJpYW5jZSBjb21wb25lbnRzIGFyZSBzaG93biBpbiB0aGlzIG5vdGVib29rLgoKCiMgRGF0YQpUaGUgZGF0YSBpcyBhdmFpbGFibGUgZnJvbSB0aGUgZm9sbG93aW5nIHBhdGgKCmBgYHtyLCBlY2hvPUZBTFNFfQpzX21zX3ZjX3BhdGggPC0gImh0dHBzOi8vY2hhcmxvdHRlLW5ncy5naXRodWIuaW8vcGlnc2NpZW5jZXNzMjAyMi9kYXRhL2J3X2JjX3JhbmRfcHJlZC5jc3YiCmlmICghcGFyYW1zJGlzb25saW5lKQogIHNfbXNfdmNfcGF0aCA8LSBmaWxlLnBhdGgoaGVyZTo6aGVyZSgpLCAiZG9jcyIsICJkYXRhIiwgImJ3X2JjX3JhbmRfcHJlZC5jc3YiKQpjYXQoc19tc192Y19wYXRoKQpgYGAKCkRhdGEgaXMgcmVhZCBmcm9tIGZpbGUgYnkKCmBgYHtyfQp0YmxfbXNfdmMgPC0gcmVhZHI6OnJlYWRfY3N2KGZpbGUgPSBzX21zX3ZjX3BhdGgpCnRibF9tc192YwpgYGAKCgojIERlc2NyaXB0aXZlIFN0YXRpc3RpY3MKUGFpcnMgcGxvdCBnaXZlcyBhbiBvdmVydmlldwoKYGBge3J9CnBhaXJzKHRibF9tc192YykKYGBgCgpJZ25vcmUgZmlyc3QgY29sdW1uIHdpdGggYW5pbWFsIElEcwoKYGBge3J9CnBhaXJzKHRibF9tc192Y1ssYygiQnJlYXN0IENpcmN1bWZlcmVuY2UiLCAiQm9keSBXZWlnaHQiLCAiUmFuZFByZWQiKV0pCmBgYAoKQWx0ZXJuYXRpdmUgc2VsZWN0aW9uIHdpdGggYGRwbHlyOjpzZWxlY3QoKWAKYGBge3J9CmxpYnJhcnkoZHBseXIpCnBhaXJzKHRibF9tc192YyAlPiUgc2VsZWN0KC1BbmltYWwpKQpgYGAKCgojIE1vZGVsIFNlbGVjdGlvbgpEbyBwcmVkaWN0b3JzIGluIHRoZSBtb2RlbCBleHBsYWluIGFueSB2YXJpYWJpbGl0eSBvZiByZXNwb25zZSBhdCBhbGwKCmBgYHtyfQphb3ZfYndfYmNfcnAgPC0gYW92KGZvcm11bGEgPSBgQm9keSBXZWlnaHRgIH4gYEJyZWFzdCBDaXJjdW1mZXJlbmNlYCArIFJhbmRQcmVkLCAKICAgICAgICAgICAgICAgICAgICBkYXRhID0gdGJsX21zX3ZjKQpzdW1tYXJ5KGFvdl9id19iY19ycCkKYGBgCgpNb3N0IG9mIHRoZSB2YXJpYWJpbGl0eSBvZiB0aGUgcmVzcG9uc2UgaXMgZXhwbGFpbmVkIGJ5IGBCcmVhc3QgQ2lyY3VtZmVyZW5jZWAuIGBSYW5kUHJlZGAgZG9lcyBub3QgZXhwbGFpbiBhIGxvdC4KClRoZSByZWdyZXNzaW9uIHRlbGwgc29tZXRoaW5nIGFib3V0IGhvdyBtdWNoIHRoZSByZXNwb25zZSBjaGFuZ2VzIHdoZW4gdGhlIHByZWRpY3RvciBjaGFuZ2VzIG9uZSB1bml0CgpgYGB7cn0KbG1fYndfYmNfcnAgPC0gbG0oZm9ybXVsYSA9IGBCb2R5IFdlaWdodGAgfiBgQnJlYXN0IENpcmN1bWZlcmVuY2VgICsgUmFuZFByZWQsIAogICAgICAgICAgICAgICAgICAgIGRhdGEgPSB0YmxfbXNfdmMpCnN1bW1hcnkobG1fYndfYmNfcnApCgpgYGAKClNlbGVjdCB0aGUgYmVzdCBtb2RlbAoKYGBge3J9CnRibF9tc192Y19vbHNyciA8LSB0YmxfbXNfdmMgJT4lIHJlbmFtZShCVyA9IGBCb2R5IFdlaWdodGAsIEJDID0gYEJyZWFzdCBDaXJjdW1mZXJlbmNlYCkKbG1fbXNfdmNfb2xzcnIgPC0gbG0oQlcgfiBCQyArIFJhbmRQcmVkLCBkYXRhID0gdGJsX21zX3ZjX29sc3JyKQpvbHNycjo6b2xzX3N0ZXBfYmVzdF9zdWJzZXQobG1fbXNfdmNfb2xzcnIpCmBgYAoKYGBge3J9Ck1BU1M6OnN0ZXBBSUMobG1fbXNfdmNfb2xzcnIpCmBgYAoKCiMgVmFyaWFuY2UgQ29tcG9uZW50cwpBZGRpbmcgc2lyZXMgdG8gdGhlIGRhdGEKCmBgYHtyfQp0YmxfbXNfdmNfc2lyZSA8LSB0YmxfbXNfdmMKdGJsX21zX3ZjX3NpcmUkU2lyZSA8LSBjKHJlcCgxLDMpLCByZXAoMiwzKSwgcmVwKDMsNCkpCnRibF9tc192Y19zaXJlCmBgYAoKQ29udmVydCBzaXJlIGNvbHVtbiB0byBmYWN0b3IKCmBgYHtyfQp0YmxfbXNfdmNfc2lyZSRTaXJlIDwtIGFzLmZhY3Rvcih0YmxfbXNfdmNfc2lyZSRTaXJlKQp0YmxfbXNfdmNfc2lyZQpgYGAKClNpbXBsaWZ5IGNvbXB1dGF0aW9ucyB3aXRoIGEgYmFsYW5jZWQgZGF0YXNldAoKYGBge3J9CnRibF9tc192Y19zaXJlIDwtIHRibF9tc192Y19zaXJlWzE6OSxdCmBgYAoKQU5PVkEKCmBgYHtyfQphb3ZfbXNfdmNfc2lyZSA8LSBhb3YoYEJvZHkgV2VpZ2h0YCB+IFNpcmUsIGRhdGEgPSB0YmxfbXNfdmNfc2lyZSkKc21yeV9hb3ZfbXNfdmNfc2lyZSA8LSBzdW1tYXJ5KGFvdl9tc192Y19zaXJlKQpzbXJ5X2Fvdl9tc192Y19zaXJlCmBgYAoKV2hhdCBpcyB0aGUgdmFyaWFuY2Ugb2YgdGhlIHNpcmUgZWZmZWN0PyBVc2UgdGhlIGZhY3QgdGhhdCAKCiQkRShNU1FfUikgPSBcc2lnbWFfZV4yJCQKSGVuY2UgJFx3aWRlaGF0e1xzaWdtYV9lXjJ9ID0gTVNRX1IgPSBgciBzbXJ5X2Fvdl9tc192Y19zaXJlW1sxXV1bIlJlc2lkdWFscyIsICJNZWFuIFNxIl1gJC4gCgpGdXJ0aGVybW9yZSAKCiQkRShNU1FfUykgPSBuX1MgKiBcc2lnbWFfU14yICsgXHNpZ21hX2VeMiAkJAoKSGVuY2UgCgokJFx3aWRlaGF0e1xzaWdtYV9TXjJ9ID0gXGZyYWN7TVNRX1MgLSBNU1FfUn17bl9TfSA9IApcZnJhY3tgciBzbXJ5X2Fvdl9tc192Y19zaXJlW1sxXV1bIlNpcmUiLCAiTWVhbiBTcSJdYCAtIGByIHNtcnlfYW92X21zX3ZjX3NpcmVbWzFdXVsiUmVzaWR1YWxzIiwgIk1lYW4gU3EiXWB9ezN9JCQKCgpgYGB7cn0Kbl9zaWdtYV9zMiA8LSAoc21yeV9hb3ZfbXNfdmNfc2lyZVtbMV1dWyJTaXJlIiwgIk1lYW4gU3EiXSAtIHNtcnlfYW92X21zX3ZjX3NpcmVbWzFdXVsiUmVzaWR1YWxzIiwgIk1lYW4gU3EiXSkgLyAzCm5fc2lnbWFfczIKYGBgCgoKbG1lNAoKYGBge3J9CmxtZXJfbXNfdmNfc2lyZSA8LSBsbWU0OjpsbWVyKGBCb2R5IFdlaWdodGAgfiAoMXxTaXJlKSwgZGF0YSA9IHRibF9tc192Y19zaXJlKQpzdW1tYXJ5KGxtZXJfbXNfdmNfc2lyZSkKYGBgCgo=</div>
 
 
 

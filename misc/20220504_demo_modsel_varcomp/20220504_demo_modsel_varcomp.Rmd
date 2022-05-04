@@ -82,3 +82,62 @@ olsrr::ols_step_best_subset(lm_ms_vc_olsrr)
 MASS::stepAIC(lm_ms_vc_olsrr)
 ```
 
+
+# Variance Components
+Adding sires to the data
+
+```{r}
+tbl_ms_vc_sire <- tbl_ms_vc
+tbl_ms_vc_sire$Sire <- c(rep(1,3), rep(2,3), rep(3,4))
+tbl_ms_vc_sire
+```
+
+Convert sire column to factor
+
+```{r}
+tbl_ms_vc_sire$Sire <- as.factor(tbl_ms_vc_sire$Sire)
+tbl_ms_vc_sire
+```
+
+Simplify computations with a balanced dataset
+
+```{r}
+tbl_ms_vc_sire <- tbl_ms_vc_sire[1:9,]
+```
+
+ANOVA
+
+```{r}
+aov_ms_vc_sire <- aov(`Body Weight` ~ Sire, data = tbl_ms_vc_sire)
+smry_aov_ms_vc_sire <- summary(aov_ms_vc_sire)
+smry_aov_ms_vc_sire
+```
+
+What is the variance of the sire effect? Use the fact that 
+
+$$E(MSQ_R) = \sigma_e^2$$
+Hence $\widehat{\sigma_e^2} = MSQ_R = `r smry_aov_ms_vc_sire[[1]]["Residuals", "Mean Sq"]`$. 
+
+Furthermore 
+
+$$E(MSQ_S) = n_S * \sigma_S^2 + \sigma_e^2 $$
+
+Hence 
+
+$$\widehat{\sigma_S^2} = \frac{MSQ_S - MSQ_R}{n_S} = 
+\frac{`r smry_aov_ms_vc_sire[[1]]["Sire", "Mean Sq"]` - `r smry_aov_ms_vc_sire[[1]]["Residuals", "Mean Sq"]`}{3}$$
+
+
+```{r}
+n_sigma_s2 <- (smry_aov_ms_vc_sire[[1]]["Sire", "Mean Sq"] - smry_aov_ms_vc_sire[[1]]["Residuals", "Mean Sq"]) / 3
+n_sigma_s2
+```
+
+
+lme4
+
+```{r}
+lmer_ms_vc_sire <- lme4::lmer(`Body Weight` ~ (1|Sire), data = tbl_ms_vc_sire)
+summary(lmer_ms_vc_sire)
+```
+
