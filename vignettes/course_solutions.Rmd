@@ -16,6 +16,17 @@ knitr::opts_chunk$set(
 
 This page contains solutions to exercises.
 
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+s_sol_url <- "https://charlotte-ngs.github.io/pigsciencess2022/sol/"
+tbl_sol <- tibble::tibble(Nr = c(1),
+                          Date = c("2022-04-27"),
+                          Topic = c(
+                           paste0("[Introduction to Breeding Programs](", s_sol_url, "psb_ex01_sol.pdf)", collapse = "")
+                          ))
+knitr::kable(tbl_sol)
+```
+
+
 
 ```{r latest-change, echo=FALSE, results='asis'}
 cat(rmdhelp::get_latest_change())
