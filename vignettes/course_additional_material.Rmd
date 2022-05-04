@@ -21,10 +21,12 @@ This page contains additional material like links to slides, video recordings, a
 
 ```{r, echo=FALSE}
 s_sl_url <- "https://charlotte-ngs.github.io/pigsciencess2022/sl/"
-tbl_sl <- tibble::tibble(Nr = c(1),
-                         Date = c("2022-04-27"),
+tbl_sl <- tibble::tibble(Nr = c(1, 2),
+                         Date = c("2022-04-27",
+                                  "2022-05-04"),
                          Topic = c(
-                           paste0("[Introduction to Breeding Programs](", s_sl_url, "l01_psb_intro.pdf)")
+                           paste0("[Introduction to Breeding Programs](", s_sl_url, "l01_psb_intro.pdf)", collapse = ""),
+                           paste0("[Model Selection and Variance Components](", s_sl_url, "l02_psb_modsel_varcomp.pdf)", collapse = "")
                          ))
 knitr::kable(tbl_sl)
 ```
