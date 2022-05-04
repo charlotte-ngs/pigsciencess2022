@@ -1,6 +1,6 @@
 Package: pigsciencess2022
 Title: Course Material for Breeding Part of Pig Science SS 2022
-Version: 0.2.0
+Version: 0.2.1
 Authors@R: 
     person("Peter", "von Rohr", , "peter.vonrohr@usys.ethz.ch", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-0078-707X"))

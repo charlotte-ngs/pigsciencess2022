@@ -1,3 +1,7 @@
+# pigsciencess2022 0.2.1
+
+* Exercise psb_ex02
+
 # pigsciencess2022 0.2.0
 
 * Chapter 4 and 5
