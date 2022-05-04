@@ -18,12 +18,15 @@ This page contains the list of links pointing to the different chapters in the c
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 s_cn_url <- "https://charlotte-ngs.github.io/pigsciencess2022/cn/"
-tbl_cn <- tibble::tibble(Nr = c(1:3), 
-                         Date = rep("2022-04-26", 3),
+tbl_cn <- tibble::tibble(Nr = c(1:3, 4, 5), 
+                         Date = c(rep("2022-04-26", 3),
+                                  rep("2022-05-04", 2)),
                          Topic = c(
                            paste0("[Introduction](", s_cn_url, "01_pbs_intro.pdf)", collapse = ""),
                            paste0("[Breeding Program](", s_cn_url, "02_psb_bprog.pdf)", collapse = ""),
-                           paste0("[Implementation of a Breeding Program](", s_cn_url, "03_pbs_implbp.pdf)", collapse = "")
+                           paste0("[Implementation of a Breeding Program](", s_cn_url, "03_pbs_implbp.pdf)", collapse = ""),
+                           paste0("[Model Selection](", s_cn_url, "04_psb_mod_sel.pdf)", collapse = ""),
+                           paste0("[Variance Components Estimation](", s_cn_url, "05_psb_vce.pdf)", collapse = "")
                          ))
 knitr::kable(tbl_cn)
 ```
