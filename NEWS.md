@@ -1,3 +1,7 @@
+# pigsciencess2022 0.2.3
+
+* Video lecture 2
+
 # pigsciencess2022 0.2.2
 
 * Slides l02_psb
