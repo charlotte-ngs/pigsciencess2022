@@ -36,10 +36,12 @@ knitr::kable(tbl_sl)
 ## Videos
 
 ```{r, echo=FALSE}
-tbl_video <- tibble::tibble(Nr = c(1),
-                            Date = c("2022-04-27"),
+tbl_video <- tibble::tibble(Nr = c(1, 2),
+                            Date = c("2022-04-27",
+                                     "2022-05-04"),
                             Topic = c(
-                              "[Introduction to Breeding Programs](https://youtu.be/cF75-GB6Mz8)"
+                              "[Introduction to Breeding Programs](https://youtu.be/cF75-GB6Mz8)",
+                              "[Design of Breeding Programs and Genetic Evaluation](https://youtu.be/Ql3ZjO_jZZw)"
                             ))
 knitr::kable(tbl_video)
 ```
@@ -50,7 +52,7 @@ knitr::kable(tbl_video)
 ```{r, echo=FALSE}
 s_data_url <- "https://charlotte-ngs.github.io/pigsciencess2022/data/"
 tbl_data <- tibble::tibble(Nr = c(1),
-                           Date = c(2022-05-04),
+                           Date = c("2022-05-04"),
                            Topic = c(
                              paste0("[Model Selection and Variance Components](", s_data_url, "bw_bc_rand_pred.csv)", collapse = "")
                            ))
