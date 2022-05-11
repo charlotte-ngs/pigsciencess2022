@@ -18,12 +18,14 @@ This page contains a list of exercises.
 
 ```{r, echo=FALSE}
 s_ex_url <- "https://charlotte-ngs.github.io/pigsciencess2022/ex/"
-tbl_ex <- tibble::tibble(Nr = c(1, 2),
+tbl_ex <- tibble::tibble(Nr = c(1, 2, 3),
                          Date = c("2022-04-27",
-                                  "2022-05-04"),
+                                  "2022-05-04",
+                                  "2022-05-11"),
                          Topic = c(
                            paste0("[Introduction to Breeding Programs](", s_ex_url, "psb_ex01.pdf)", collapse = ""),
-                           paste0("[Model Selection](", s_ex_url, "psb_ex02.pdf)")
+                           paste0("[Model Selection](", s_ex_url, "psb_ex02.pdf)", collapse = ""),
+                           paste0("[Variance Components](", s_ex_url, "psb_ex03.pdf)", collapse = "")
                          ))
 knitr::kable(tbl_ex)
 ```
