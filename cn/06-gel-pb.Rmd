@@ -304,6 +304,77 @@ As long as the number of genotyped animals is lower than the number of genotypes
 At this point it is important to note that whether we use genomic information or not, the goal of the prediction of breeding values remains still the same. We want to get a prediction of the genetic potential of each animal. This prediction must be as accurate as possible. The realized values of the predictions are used to rank the animals. Based on these rankings the selection decisions are taken to determine the parents of the future generations of livestock animals. 
 
 
+In GBLUP genomic breeding values are directly predicted by including the genomic breeding values $u$ which corresponds to the sum of all SNP-allele effects directly as a random effect in the model. 
+
+\begin{equation}
+y = X \beta + W u + e
+(\#eq:gblupmodel)
+\end{equation}
+
+where $W$ is the design matrix linking genomic breeding values to observations. The mixed model equations are the defined as
+
+
+\begin{equation}
+\left[
+  \begin{array}{lr}
+  X^TR^{-1}X  &  X^TR^{-1}W \\
+  W^TR^{-1}X  &  W^TR^{-1}W + G^{-1}* \lambda
+  \end{array}
+\right]
+\left[
+  \begin{array}{c}
+  \hat{\beta} \\
+  \hat{u}
+  \end{array}
+\right]
+=
+\left[
+  \begin{array}{c}
+  X^TR^{-1}y \\
+  W^TR^{-1}y
+  \end{array}
+\right]
+(\#eq:gblupmme)
+\end{equation}
+
+where $G$ is defined as the genomic relationship matrix and $\lambda$ corresponds to the ratio of the residual variance divided by the total genetic variance explained by all SNP-loci. We can see that the GBLUP model looks very similar to the animal model, except that the covariances between random effects in the animal model are based on the numerator relationship matrix and in GBLUP they are modeled via the genomic relationship matrix $G$. This means in the animal model the covariance between random breeding values is based on the concept of common ancestry and identity-by-descent. This is replaced in GBLUP by the concept of sharing the same alleles based on identity-by-state which is assumed to be the cause of the covariance between random genomic breeding values. 
+
+
+## How Does GBLUP Work {#asm-gblup-howdoesgblupwork}
+The genomic relationship matrix $G$ allows to predict genomic breeding values for animals with SNP-Genotypes without any observation in the dataset. This fact is the basis of the large benefit of genomic selection. As soon as a young animal is born, its SNP genotypes can be determined and a genomic breeding value can be predicted. This genomic breeding value is much more accurate then the traditional breeding value based only on ancestral information. 
+
+The breeding value model is a linear mixed effects model. The solution for the unknown parameters can be obtained by solving the mixed model equations shown in \@ref(eq:asm-gblup-gblupmme). In this form the Inverse $G^{-1}$ of $G$ and the vector $\hat{g}$ of predicted genotypic breeding values are split into one part corresponding to the animals with observations and a second part for the animals without phenotypic information.
+
+```{r GblupMme, echo=FALSE, results='asis'}
+matCoeff <- matrix(c("X^TX","X^TZ","0",
+                     "Z^TX","Z^TZ + G^{(11)}","G^{(12)}",
+                     "0","G^{(21)}","G^{(22)}"), ncol = 3, byrow = TRUE)
+vecSol <- c("\\hat{b}","\\hat{g}_1","\\hat{g}_2")
+vecRhs <- c("X^Ty","Z^Ty","0")
+
+### # show mme
+cat("\\begin{equation}\n")
+cat(paste(rmdhelp::bmatrix(pmat = matCoeff), collapse = '\n'), '\n')
+cat(paste(rmdhelp::bcolumn_vector(pvec = vecSol), collapse = '\n'), '\n')
+cat(" = \n")
+cat(paste(rmdhelp::bcolumn_vector(pvec = vecRhs), collapse = '\n'), '\n')
+cat("(\\#eq:asm-gblup-gblupmme)")
+cat("\\end{equation}\n")
+```
+
+The matrix $G^{(11)}$ denotes the part of $G^{-1}$ corresponding to the animals with phenotypic observations. Similarly, $G^{(22)}$ stands for the part of the animals without genotypic observations. The matrices $G^{(12)}$ and $G^{(21)}$ are the parts of $G^{-1}$ which link the two groups of animals. The same partitioning holds for the vector of predicted breeding values. The vector $\hat{g}_1$ contains the predicted breeding values for the animals with observations and the vector $\hat{g}_2$ contains the predicted breeding values of all animals without phenotypic observations. 
+
+Based on the last line of \@ref(eq:asm-gblup-gblupmme) the predicted breeding values $\hat{g}_2$ of all animals without phenotypic observations can be computed from the predicted breeding values $\hat{g}_1$ from the animals with observations.
+
+\begin{equation}
+\hat{g}_2 = -\left( G^{22}\right)^{-1}G^{21}\hat{g}_1
+(\#eq:GenomicBvAnimalNoPhen)
+\end{equation}
+
+Equation \@ref(eq:GenomicBvAnimalNoPhen) is referred to as genomic regression of predicted breeding values of animals without observation on the predicted genomic breeding values of animals with observations. The genomic regression is responsible why genomic selection has lead to a change in paradigmn in cattle breeding with a dramatic reduction of the generation interval in the breeding program. In pig breeding genomic breeding values based on equation \@ref(eq:GenomicBvAnimalNoPhen) are used to make a selection decision between litter mates and thereby determine which of the piglets are kept and which are sent to the testing station.
+
+
+
 
 
   
