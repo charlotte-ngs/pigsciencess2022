@@ -21,12 +21,14 @@ This page contains additional material like links to slides, video recordings, a
 
 ```{r, echo=FALSE}
 s_sl_url <- "https://charlotte-ngs.github.io/pigsciencess2022/sl/"
-tbl_sl <- tibble::tibble(Nr = c(1, 2),
+tbl_sl <- tibble::tibble(Nr = c(1, 2, 3),
                          Date = c("2022-04-27",
-                                  "2022-05-04"),
+                                  "2022-05-04",
+                                  "2022-05-11"),
                          Topic = c(
                            paste0("[Introduction to Breeding Programs](", s_sl_url, "l01_psb_intro.pdf)", collapse = ""),
-                           paste0("[Model Selection and Variance Components](", s_sl_url, "l02_psb_modsel_varcomp.pdf)", collapse = "")
+                           paste0("[Model Selection and Variance Components](", s_sl_url, "l02_psb_modsel_varcomp.pdf)", collapse = ""),
+                           paste0("[Prediction of Breeding Values](", s_sl_url, "l03_psb_pbv.pdf)", collapse = "")
                          ))
 knitr::kable(tbl_sl)
 ```
@@ -64,10 +66,12 @@ knitr::kable(tbl_data)
 
 ```{r, echo=FALSE}
 s_misc_url <- "https://charlotte-ngs.github.io/pigsciencess2022/misc/"
-tbl_misc <- tibble::tibble(Nr = c(1),
-                           Date = c("2022-04-27"),
+tbl_misc <- tibble::tibble(Nr = c(1, 2),
+                           Date = c("2022-04-27",
+                                    "2022-05-11"),
                            Topic = c(
-                             "[SRF 10vor10 Report on breeding](https://www.srf.ch/play/tv/redirect/detail/51803eb1-9313-45f1-bee3-833fc3f79d97)"
+                             "[SRF 10vor10 Report on breeding](https://www.srf.ch/play/tv/redirect/detail/51803eb1-9313-45f1-bee3-833fc3f79d97)",
+                             "[Applied Statistical Methods in Animal Sciences](https://charlotte-ngs.github.io/asmss2022)"
                            ))
 knitr::kable(tbl_misc)
 ```
