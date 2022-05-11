@@ -1,3 +1,7 @@
+# pigsciencess2022 0.3.0
+
+* Chapter 6 of course notes
+
 # pigsciencess2022 0.2.3
 
 * Video lecture 2
