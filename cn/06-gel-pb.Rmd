@@ -318,7 +318,7 @@ where $W$ is the design matrix linking genomic breeding values to observations. 
 \left[
   \begin{array}{lr}
   X^TR^{-1}X  &  X^TR^{-1}W \\
-  W^TR^{-1}X  &  W^TR^{-1}W + G^{-1}* \lambda
+  W^TR^{-1}X  &  W^TR^{-1}W + G^{-1} * \sigma_u^{-2}
   \end{array}
 \right]
 \left[
@@ -337,7 +337,7 @@ where $W$ is the design matrix linking genomic breeding values to observations. 
 (\#eq:gblupmme)
 \end{equation}
 
-where $G$ is defined as the genomic relationship matrix and $\lambda$ corresponds to the ratio of the residual variance divided by the total genetic variance explained by all SNP-loci. We can see that the GBLUP model looks very similar to the animal model, except that the covariances between random effects in the animal model are based on the numerator relationship matrix and in GBLUP they are modeled via the genomic relationship matrix $G$. This means in the animal model the covariance between random breeding values is based on the concept of common ancestry and identity-by-descent. This is replaced in GBLUP by the concept of sharing the same alleles based on identity-by-state which is assumed to be the cause of the covariance between random genomic breeding values. 
+where $G$ is defined as the genomic relationship matrix and $\sigma_u^2$ corresponds to the total genetic variance explained by all SNP-loci. We can see that the GBLUP model looks very similar to the animal model, except that the covariances between random effects in the animal model are based on the numerator relationship matrix and in GBLUP they are modeled via the genomic relationship matrix $G$. This means in the animal model the covariance between random breeding values is based on the concept of common ancestry and identity-by-descent. This is replaced in GBLUP by the concept of sharing the same alleles based on identity-by-state which is assumed to be the cause of the covariance between random genomic breeding values. 
 
 
 ## How Does GBLUP Work {#asm-gblup-howdoesgblupwork}
