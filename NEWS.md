@@ -1,3 +1,7 @@
+# pigsciencess2022 0.3.2
+
+* Slides l03_psb_pbv
+
 # pigsciencess2022 0.3.1
 
 * Exercise ps_ex03
