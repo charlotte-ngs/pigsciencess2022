@@ -38,12 +38,14 @@ knitr::kable(tbl_sl)
 ## Videos
 
 ```{r, echo=FALSE}
-tbl_video <- tibble::tibble(Nr = c(1, 2),
+tbl_video <- tibble::tibble(Nr = c(1, 2, 3),
                             Date = c("2022-04-27",
-                                     "2022-05-04"),
+                                     "2022-05-04",
+                                     "2022-05-11"),
                             Topic = c(
                               "[Introduction to Breeding Programs](https://youtu.be/cF75-GB6Mz8)",
-                              "[Design of Breeding Programs and Genetic Evaluation](https://youtu.be/Ql3ZjO_jZZw)"
+                              "[Design of Breeding Programs and Genetic Evaluation](https://youtu.be/Ql3ZjO_jZZw)",
+                              "[Model Selection, Variance Components, Prediction of Breeding Values](https://youtu.be/XZCFMoSD7xE)"
                             ))
 knitr::kable(tbl_video)
 ```
