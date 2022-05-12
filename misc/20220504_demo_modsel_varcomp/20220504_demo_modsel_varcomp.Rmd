@@ -1,12 +1,17 @@
 ---
 title: "Model Selection and Variance Components"
-output: html_notebook
+output: html_document
 params:
   isonline:
     label: 'Online (y/n)'
     value: FALSE
     choices: [TRUE, FALSE]
 ---
+
+```{r setup}
+# rmdhelp::show_knit_hook_call()
+knitr::knit_hooks$set(hook_convert_odg = rmdhelp::hook_convert_odg)
+```
 
 # Disclaimer
 Data and code for the demo on model selection and variance components are shown in this notebook.
@@ -51,16 +56,68 @@ pairs(tbl_ms_vc %>% select(-Animal))
 
 
 # Model Selection
-Do predictors in the model explain any variability of response at all
+Do predictors in the model explain any variability of response at all is answered by the following analysis of variance (ANOVA)
+
+
+## ANOVA
 
 ```{r}
 aov_bw_bc_rp <- aov(formula = `Body Weight` ~ `Breast Circumference` + RandPred, 
                     data = tbl_ms_vc)
-summary(aov_bw_bc_rp)
+(smry_aov_bw_bc_rp <- summary(aov_bw_bc_rp))
 ```
 
-Most of the variability of the response is explained by `Breast Circumference`. `RandPred` does not explain a lot.
+Most of the variability of the response is explained by `Breast Circumference`. `RandPred` does not explain a lot. 
 
+
+## Reproduction of ANOVA Results
+The computations of the different sum of squares (SSQ) values are reproduced. We start with the total sum of squares ($SSQ_T$) which corresponds to the sum of the squared deviations of the observed values for the response from the overall mean of all observations.
+
+```{r}
+n_mean_bw <- mean(tbl_ms_vc$`Body Weight`)
+n_ssq_total <- sum((tbl_ms_vc$`Body Weight` - n_mean_bw)^2)
+n_ssq_total
+```
+
+This corresponds to the sum of all entries in column `Sum Sq` in the above ANOVA table.
+
+```{r}
+sum(smry_aov_bw_bc_rp[[1]][,"Sum Sq"])
+```
+
+
+The decomposition of $SSQ_T$ can be shown with a scatterplot
+
+```{r}
+p <- ggplot2::ggplot(data = tbl_ms_vc, ggplot2::aes(x = `Breast Circumference`, y = `Body Weight`)) + 
+  ggplot2::geom_point() + 
+  ggplot2::geom_smooth(method = "lm", se = FALSE, ggplot2::aes(color = "red")) + 
+  ggplot2::geom_hline(yintercept = n_mean_bw, ggplot2::aes(color = "greed")) +
+  ggplot2::theme(legend.position = "none")
+p
+``` 
+
+Save the plot to add more details
+
+```{r, message=FALSE, warning=FALSE}
+s_plot_dir <- "pdf"
+if (!dir.exists(s_plot_dir)) dir.create(path = s_plot_dir)
+s_plot_file <- file.path(s_plot_dir, "ssq_reg_plot.pdf")
+if (!file.exists(s_plot_file))
+  ggplot2::ggsave(filename = s_plot_file, p)
+```
+
+Adding more details to the plot
+
+```{r ssq-reg-plot, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg", out.width="100%"}
+#rmdhelp::use_odg_graphic(ps_path = "odg/ssq-reg-plot.odg")
+knitr::include_graphics(path = "odg/ssq-reg-plot.png")
+```
+
+
+
+
+## Regression
 The regression tell something about how much the response changes when the predictor changes one unit
 
 ```{r}
@@ -140,4 +197,4 @@ lme4
 lmer_ms_vc_sire <- lme4::lmer(`Body Weight` ~ (1|Sire), data = tbl_ms_vc_sire)
 summary(lmer_ms_vc_sire)
 ```
-
+ 
