@@ -71,7 +71,11 @@ Most of the variability of the response is explained by `Breast Circumference`. 
 
 
 ## Reproduction of ANOVA Results
-The computations of the different sum of squares (SSQ) values are reproduced. We start with the total sum of squares ($SSQ_T$) which corresponds to the sum of the squared deviations of the observed values for the response from the overall mean of all observations.
+The computations of the different sum of squares (SSQ) values are reproduced. 
+
+
+### Total Sum of Squares
+We start with the total sum of squares ($SSQ_T$) which corresponds to the sum of the squared deviations of the observed values for the response from the overall mean of all observations.
 
 ```{r}
 n_mean_bw <- mean(tbl_ms_vc$`Body Weight`)
@@ -115,6 +119,79 @@ knitr::include_graphics(path = "odg/ssq-reg-plot.png")
 ```
 
 
+### Residual Sum of Squares
+The residual sum of squares result from the difference between the observed values and the fitted values. This is obtained by
+
+```{r}
+sum((tbl_ms_vc$`Body Weight` - fitted(aov_bw_bc_rp))^2)
+```
+
+This corresponds to the value form the ANOVA-table
+
+```{r}
+smry_aov_bw_bc_rp[[1]]["Residuals", "Sum Sq"]
+```
+
+
+### Sum of Squares for the Model
+The sum of squares for the regression model summarize the sum of squares which can be explained by the total  of all predictors. This is computed as
+
+```{r}
+(ssq_pred <- sum((fitted(aov_bw_bc_rp) - n_mean_bw)^2))
+```
+
+From this summary of the aov this can be determined as
+
+```{r}
+smry_aov_bw_bc_rp[[1]]["`Breast Circumference`", "Sum Sq"] + smry_aov_bw_bc_rp[[1]]["RandPred", "Sum Sq"]
+```
+
+
+###  Sum of Squares for Predictors
+The first predictor is `Breast Circumference`. The sum of squares attributable to this predictor can be computed by fitting a regression with this predictor alone and taking the sum of squares from that model
+
+```{r}
+aov_bw_bc <- aov(`Body Weight` ~ `Breast Circumference`, data = tbl_ms_vc)
+(ssq_bc <- sum((fitted(aov_bw_bc) - n_mean_bw)^2))
+```
+
+This is the same as
+
+```{r}
+smry_aov_bw_bc_rp[[1]]["`Breast Circumference`", "Sum Sq"]
+```
+
+
+The sum of squares for the second predictor is computed as the difference between the sum of squares for all predictors minus the sum of squares of the first predictor
+
+```{r}
+ssq_pred - ssq_bc
+```
+
+From the summary, we get
+
+```{r}
+smry_aov_bw_bc_rp[[1]]["RandPred", "Sum Sq"]
+```
+
+
+### Order of Predictors
+
+```{r}
+library(dplyr)
+tbl_ms_vc_reorder <- tbl_ms_vc %>% rename(ARandPred = RandPred)
+tbl_ms_vc_reorder
+```
+
+```{r}
+summary(aov(`Body Weight` ~ `Breast Circumference` + ARandPred, data = tbl_ms_vc_reorder))
+```
+
+```{r}
+summary(aov(`Body Weight` ~ RandPred + `Breast Circumference`, data = tbl_ms_vc))
+```
+
+This shows that the order in which the predictors are added to sub-models is determined by the order of the predictors in the formula argument. As the above results show, the order is important for the magnitude of the sum of squares and also for all the tests that are based on this quantity.
 
 
 ## Regression
