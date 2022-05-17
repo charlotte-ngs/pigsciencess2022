@@ -64,6 +64,17 @@ knitr::kable(tbl_data)
 ```
 
 
+## Notebooks
+```{r, echo=FALSE}
+s_misc_url <- "https://charlotte-ngs.github.io/pigsciencess2022/misc/"
+tbl_nb <- tibble::tibble(Nr = c(1),
+                         Date = c("2022-05-04"),
+                         Topic = c(
+                           paste0("[Model Selection and ANOVA](", s_misc_url, "20220504_model_selection.nb.nb.nb.html)", collapse = "")
+                         ))
+knitr::kable(tbl_nb)
+```
+
 ## Misc
 
 ```{r, echo=FALSE}

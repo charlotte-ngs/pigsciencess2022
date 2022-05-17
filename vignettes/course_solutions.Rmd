@@ -18,10 +18,14 @@ This page contains solutions to exercises.
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 s_sol_url <- "https://charlotte-ngs.github.io/pigsciencess2022/sol/"
-tbl_sol <- tibble::tibble(Nr = c(1),
-                          Date = c("2022-04-27"),
+tbl_sol <- tibble::tibble(Nr = c(1, 2, 3),
+                          Date = c("2022-04-27",
+                                  "2022-05-04",
+                                  "2022-05-11"),
                           Topic = c(
-                           paste0("[Introduction to Breeding Programs](", s_sol_url, "psb_ex01_sol.pdf)", collapse = "")
+                           paste0("[Introduction to Breeding Programs](", s_sol_url, "psb_ex01_sol.pdf)", collapse = ""),
+                           paste0("[Model Selection](", s_sol_url, "psb_ex02_sol.pdf)", collapse = ""),
+                           paste0("[Variance Components](", s_sol_url, "psb_ex03_sol.pdf)", collapse = "")
                           ))
 knitr::kable(tbl_sol)
 ```
