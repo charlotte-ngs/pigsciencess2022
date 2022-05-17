@@ -1,0 +1,187 @@
+---
+title: "Analysis of Variance and Model Selection"
+output: html_notebook
+---
+
+
+# Read data
+
+```{r, message=FALSE, warning=FALSE}
+s_data_path <- "https://charlotte-ngs.github.io/pigsciencess2022/data/bw_bc_rand_pred.csv"
+tbl_data <- readr::read_csv(file = s_data_path)
+tbl_data
+```
+
+# Descriptive Statistics
+
+```{r}
+pairs(tbl_data)
+```
+
+
+# Model Selection
+
+Full model
+
+```{r}
+lm_bw_bc_rp <- lm(formula = `Body Weight` ~ `Breast Circumference` + RandPred, 
+                    data = tbl_data)
+summary(lm_bw_bc_rp)
+```
+
+```{r, message=FALSE, warning=FALSE}
+library(dplyr)
+tbl_ms_vc_olsrr <- tbl_data %>% rename(BW = `Body Weight`, BC = `Breast Circumference`)
+lm_ms_vc_olsrr <- lm(BW ~ BC + RandPred, data = tbl_ms_vc_olsrr)
+olsrr::ols_step_best_subset(lm_ms_vc_olsrr)
+
+```
+
+Alternative
+
+```{r}
+MASS::stepAIC(lm_ms_vc_olsrr)
+```
+
+
+# ANOVA
+
+```{r}
+aov_bw_bc_rp <- aov(formula = `Body Weight` ~ `Breast Circumference` + RandPred, 
+                    data = tbl_data)
+(smry_aov_bw_bc_rp <- summary(aov_bw_bc_rp))
+
+```
+
+## Computation of Sum of Squares (`Sum Sq`)
+The total sum of squares ($SSQ_T$) is computed by summing over the squared deviations of the observed body weights from the mean body weight. This is computed as
+
+```{r}
+n_mean_bw <- mean(tbl_data$`Body Weight`)
+ssq_t <- sum((tbl_data$`Body Weight` - n_mean_bw)^2)
+ssq_t
+```
+
+This corresponds to the sum of all entries in the column `Sum Sq` in the ANOVA-Table shown above.
+
+```{r}
+sum(smry_aov_bw_bc_rp[[1]][, "Sum Sq"])
+```
+
+
+### Residuals
+The sum of squares of the residuals is the sum of the squared deviations of the observed body weights minus the fitted values of the regression model. This corresponds to
+
+```{r}
+ssq_r <- sum((tbl_data$`Body Weight` - fitted(aov_bw_bc_rp))^2)
+ssq_r
+```
+
+From the ANOVA table we get
+
+```{r}
+smry_aov_bw_bc_rp[[1]]["Residuals", "Sum Sq"]
+```
+
+
+### Regression
+The sum of squares that can be attributed to the regression model is computed by the sum of the squared deviations between the fitted values minus the mean body weight.
+
+```{r}
+ssq_m <- sum((fitted(aov_bw_bc_rp) - n_mean_bw)^2)
+ssq_m
+```
+
+This corresponds to the sum of the values in column `Sum Sq` for `Breast Circumference` and `RandPred`. 
+
+```{r}
+smry_aov_bw_bc_rp[[1]]["`Breast Circumference`", "Sum Sq"] + smry_aov_bw_bc_rp[[1]]["RandPred", "Sum Sq"]
+```
+
+The sum of squares for the predictor `Breast Circumference` is computed as the regression sum of squares in a model where only `Breast Circumference` is used as the only predictor.
+
+```{r}
+aov_bw_bc <- aov(formula = `Body Weight` ~ `Breast Circumference`, data = tbl_data)
+smry_aov_bw_bc <- summary(aov_bw_bc)
+ssq_b <- sum((fitted(aov_bw_bc) - n_mean_bw)^2)
+ssq_b
+```
+
+From the ANOVA table of the full model
+
+```{r}
+smry_aov_bw_bc_rp[[1]]["`Breast Circumference`", "Sum Sq"]
+```
+
+The sum of squares for the predictor `Rand Pred` correspond to the difference between the regression sum of squares minus the sum of squares computed for `Breast Circumference` alone
+
+```{r}
+ssq_m - ssq_b
+```
+
+From the ANOVA table, we get
+
+```{r}
+smry_aov_bw_bc_rp[[1]]["RandPred", "Sum Sq"]
+```
+
+The computation of the sum of squares for the single predictor indicate that the order of the predictor matters. The order in which the sum of squares of the single predictors are computed is determined by the order of the predictor in the formula specified in the call to `aov()`. Hence the following call results in a different ANOVA table
+
+```{r}
+summary(aov(formula = `Body Weight` ~ RandPred + `Breast Circumference`, data = tbl_data))
+```
+
+Comparing the second version of the ANOVA table to the original one, shows that it is better to order the predictors according to their value in the `Sum Sq` column.
+
+
+## Sire Variance Component
+A column with the ID of the sire is added.
+
+```{r}
+tbl_ms_vc_sire <- tbl_data
+tbl_ms_vc_sire$Sire <- c(rep(1,3), rep(2,3), rep(3,4))
+tbl_ms_vc_sire
+
+```
+
+
+```{r}
+tbl_ms_vc_sire$Sire <- as.factor(tbl_ms_vc_sire$Sire)
+tbl_ms_vc_sire
+
+```
+
+To have a balanced dataset, we only use the first nine observations.
+
+```{r}
+tbl_ms_vc_sire <- tbl_ms_vc_sire[1:9,]
+tbl_ms_vc_sire
+```
+
+Determine sire variance component using `aov()`.
+
+```{r}
+aov_ms_vc_sire <- aov(`Body Weight` ~ Sire, data = tbl_ms_vc_sire)
+smry_aov_ms_vc_sire <- summary(aov_ms_vc_sire)
+smry_aov_ms_vc_sire
+
+```
+
+
+
+```{r}
+n_sigma_s2 <- (smry_aov_ms_vc_sire[[1]]["Sire", "Mean Sq"] - smry_aov_ms_vc_sire[[1]]["Residuals", "Mean Sq"]) / 3
+n_sigma_s2
+
+```
+
+
+
+REML
+
+```{r}
+lmer_ms_vc_sire <- lme4::lmer(`Body Weight` ~ (1|Sire), data = tbl_ms_vc_sire)
+summary(lmer_ms_vc_sire)
+
+```
+
