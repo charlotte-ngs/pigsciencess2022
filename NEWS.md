@@ -1,3 +1,7 @@
+# pigsciencess2022 0.3.4
+
+* Notebook on model selection and ANOVA and solutions to psb_ex02 and psb_ex03
+
 # pigsciencess2022 0.3.3
 
 * Video lecture 3
