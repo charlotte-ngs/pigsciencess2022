@@ -1,0 +1,110 @@
+---
+title: "Solutions to Exam Questions Pig Science Breeding"
+author: "Peter von Rohr"
+date: "`r Sys.Date()`"
+output:
+  word_document:
+    reference_docx: docx/exam_questions_template.docx
+  pdf_document:
+    includes:
+      in_header: tex/header.tex
+  html_document:
+    df_print: paged
+---
+
+\newcommand{\points}[1]
+{\begin{flushright}\textbf{#1}\end{flushright}}
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+# rmdhelp::show_knit_hook_call()
+knitr::knit_hooks$set(hook_convert_odg = rmdhelp::hook_convert_odg)
+```
+
+```{r points}
+n_points_q1 <- 6
+n_points_q2 <- 4
+n_points_q3 <- 4
+n_points_q4 <- 3
+n_points_q5 <- 3
+n_points_q6 <- 6
+n_points_total <- n_points_q1 + n_points_q2 + n_points_q3 + n_points_q4 + n_points_q5
+tbl_points <- tibble::tibble(Question = c(as.character(1:5), "Total"),
+                             `Maximum Points` = c(n_points_q1,
+                                                  n_points_q2,
+                                                  n_points_q3,
+                                                  n_points_q4,
+                                                  n_points_q5,
+                                                  n_points_total))
+knitr::kable(tbl_points,
+             booktabs = TRUE,
+             longtable = TRUE)
+```
+
+
+# Question 1
+What are the six components of a breeding program?
+  
+_Wie lauten die sechs Komponenten eines Zuchtprogramms?_
+
+```{r, echo=FALSE, results='asis'}
+cat("__", n_points_q1, "__", "\n", sep = "")
+```
+
+
+
+# Question 2
+Compare a typical breeding program in cattle with a breeding program in pigs. Draw the characteristic scheme for the two types of breeding programs
+
+_Vergleichen sie ein typisches Zuchtprogramm beim Rind mit einem typischen Zuchtprogramm beim Schwein. Zeichnen sie dabei die charakteristischen Schemata der beiden Zuchtprogrammtypen auf._
+
+```{r, echo=FALSE, results='asis'}
+cat("__", n_points_q2, "__", "\n", sep = "")
+```
+
+
+
+# Question 3
+
+What is the goal of model selection and what are two well-known approximations to do model selection?
+
+_Was ist das Ziel der Modellselektion und wie lauten zwei bekannte Approximationen um Modellselektion auszuführen?
+
+```{r, echo=FALSE, results='asis'}
+cat("__", n_points_q3, "__", "\n", sep = "")
+```
+
+
+
+# Question 4
+Why are variance components important in the process of a genetic evaluation? Name two methods how to estimate variance components.
+
+_Weshalb sind Varianzkomponenten wichtig im Prozess der genetischen Auswertung? Benennen sie zwei Methoden um Varianzkomponenten zu schäten._
+
+```{r, echo=FALSE, results='asis'}
+cat("__", n_points_q4, "__", "\n", sep = "")
+```
+
+
+
+# Question 5
+What are three different models to predict breeding values?
+
+_Wie lauten drei verschiedene Modelle zur Schätzung von Zuchtwerten?_
+
+
+```{r, echo=FALSE, results='asis'}
+cat("__", n_points_q5, "__", "\n", sep = "")
+```  
+
+
+
+# Questions 6
+What are the four components that determine the selection response per year? Which of the two components are antagonistic? What is the recently introduced breeding method that resolves the antagonism?
+
+_Wie lauten die vier Komponenten, welche den Zuchtfortschritt pro Jahr bestimmen? Welche der beiden Komponenten stehen antagonistisch zueinander? Welche kürzlich eingeführte Züchtungsmethode kann diesen Antagonismus auflösen?_
+
+```{r, echo=FALSE, results='asis'}
+cat("__", n_points_q5, "__", "\n", sep = "")
+```  
+
